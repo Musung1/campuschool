@@ -1,7 +1,7 @@
 import 'package:campuschool/constants/controllerConstants.dart';
-import 'package:campuschool/screens/favoriteScreen.dart';
-import 'package:campuschool/screens/home.dart';
-import 'package:campuschool/screens/myClassScreen.dart';
+import 'package:campuschool/screens/favorite/favoriteScreen.dart';
+import 'package:campuschool/screens/home/home.dart';
+import 'package:campuschool/screens/myclass/myClassScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class LandingScreen extends StatelessWidget {

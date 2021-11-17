@@ -1,5 +1,5 @@
 import 'package:campuschool/screens/Search/searchScreen.dart';
-import 'package:campuschool/screens/home.dart';
+import 'package:campuschool/screens/home/home.dart';
 import 'package:campuschool/screens/landingScreen.dart';
 import 'package:campuschool/screens/login/loginPage.dart';
 import 'package:campuschool/screens/profile/profileScreen.dart';
