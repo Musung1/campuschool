@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'binding/bindings.dart';
+import 'screens/add_class/addClassScreen.dart';
 class Campuschool extends StatelessWidget {
   const Campuschool({Key? key}) : super(key: key);
 
@@ -41,6 +42,10 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/home/search",
           page: () => SearchScreen(),
+        ),
+        GetPage(
+          name: "/landing/home/addClass",
+          page: () => AddClassScreen(),
         ),
       ]
     );
