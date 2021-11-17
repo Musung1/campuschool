@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "274388471725",
+    "project_id": "campuschool-868b7",
+    "storage_bucket": "campuschool-868b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274388471725:android:4ba444b7154f77c7201b24",
+        "android_client_info": {
+          "package_name": "com.example.campuschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274388471725-8i2tqa44sj98u9c4cbhjqel8g1fmnt5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campuschool",
+            "certificate_hash": "c12b8f15bc1f28b03b0eab2ac3ee5bc5a57e21ca"
+          }
+        },
+        {
+          "client_id": "274388471725-5nn28i8v6rfr3mdk212hrtp9ihtb7o5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUc5xywpOGqIcEXuGt8whrtXJs5jEwgI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274388471725-5nn28i8v6rfr3mdk212hrtp9ihtb7o5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
