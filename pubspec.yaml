@@ -34,15 +34,8 @@ dependencies:
   firebase_core: ^1.10.0
   firebase_auth: ^3.2.0
   firebase_storage: ^10.1.0
-<<<<<<< HEAD
-  cloud_firestore: ^3.1.0
-  image_picker: ^0.8.4+1
-=======
-  google_fonts: ^2.1.0
-  cloud_firestore: ^3.1.0
-  image_picker: ^0.8.4+4
->>>>>>> 1740944320e1dc58e1f13d28097878402ac67a06
   uuid: ^3.0.5
+  image: ^3.0.8
 
 dev_dependencies:
   flutter_test:
