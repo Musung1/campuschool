@@ -48,7 +48,7 @@ class LandingScreen extends StatelessWidget {
                     size: 20.0,
                   ),
                 ),
-                label: '찜목',
+                label: '찜목록',
                 backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
               ),
               BottomNavigationBarItem(

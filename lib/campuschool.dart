@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 import 'binding/bindings.dart';
 import 'screens/add_class/addClassScreen.dart';
+import 'screens/detail/detail_screen.dart';
 class Campuschool extends StatelessWidget {
   const Campuschool({Key? key}) : super(key: key);
 
@@ -46,6 +47,10 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/home/addClass",
           page: () => AddClassScreen(),
+        ),
+        GetPage(
+          name: "/landing/home/detailScreen",
+          page: () => DetailScreen(),
         ),
       ]
     );
