@@ -38,6 +38,11 @@ dependencies:
   cloud_firestore: ^3.1.0
   uuid: ^3.0.5
   image: ^3.0.8
+  image_picker: ^0.8.4+1
+  google_maps_flutter: ^2.1.1
+  webview_flutter: ^2.3.1
+  google_place: ^0.4.3
+  kpostal: ^0.3.2
 
 dev_dependencies:
   flutter_test:

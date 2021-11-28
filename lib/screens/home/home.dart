@@ -1,3 +1,4 @@
+import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/constants/firebaseConstants.dart';
 import 'package:campuschool/model/class_model.dart';
 import 'package:campuschool/themes/color_theme.dart';
@@ -144,22 +145,20 @@ class Home extends StatelessWidget {
     );
   }
   Widget _classesGrid() {
-    return StreamBuilder<List<Class>>(
-        stream: getClass(),
-        builder: (context, snapshot) {
-          if(snapshot.hasData){
-            return Container(
-              height: 260,
-              child: GridView.count(
-                crossAxisCount: 2,
-                padding: const EdgeInsets.all(16.0),
-                childAspectRatio: 8.0 / 9.0,
-                children: _buildGridCards(snapshot.data!),
-              ),
-            );
-          }
-          else return CircularProgressIndicator();
-        });
+    return Obx(()=>
+        !(classController.classList.isNullOrBlank)!?
+        Container(
+          height: 260,
+          child: GridView.count(
+            crossAxisCount: 2,
+            padding: const EdgeInsets.all(16.0),
+            childAspectRatio: 8.0 / 9.0,
+            children: _buildGridCards(classController.classList),
+          ),
+        )
+            :
+            Container(),
+    );
   }
   List<Card> _buildGridCards(List<Class> Classes) {
     if (Classes.isEmpty) {
@@ -218,26 +217,6 @@ class Home extends StatelessWidget {
       );
     }).toList();
   }
-
-Stream<List<Class>> getClass() {
-  return firebaseFirestore.collection("class")
-      .snapshots().map((value){
-    return value.docs.map((element){
-      return Class(
-        name : element.data()['name'].toString(),
-        category : element.data()['category'].toString(),
-        price : element.data()['price'].toString(),
-        description : element.data()['description'].toString(),
-        location : element.data()['location'].toString(),
-        date : element.data()['date'].toString(),
-        image : element.data()['image'].toString(),
-        author : element.data()['author'].toString(),
-        id : element.id.toString()
-      );
-    }
-    ).toList();
-  });
-}
 }
 
 Future<String> downloadURLExample(String file) async {
