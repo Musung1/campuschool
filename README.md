@@ -1,12 +1,14 @@
-# campuschool
+# Campuschool
 
-A new Flutter project.
+Mobile App Dev Class Project
 
-## Getting Started
+*by Daeseong Lee & Musung Kim*
 
-This project is a starting point for a Flutter application.
+## Description
 
-A few resources to get you started if this is your first Flutter project:
+*Campuschool is your new school, on your campus.*
+
+You can find your teacher and students.
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
