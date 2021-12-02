@@ -2,6 +2,7 @@ import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/screens/favorite/favoriteScreen.dart';
 import 'package:campuschool/screens/home/home.dart';
 import 'package:campuschool/screens/myclass/myClassScreen.dart';
+import 'package:campuschool/themes/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class LandingScreen extends StatelessWidget {
@@ -23,7 +24,7 @@ class LandingScreen extends StatelessWidget {
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+            backgroundColor: MyColor.primary,
             unselectedItemColor: Colors.white.withOpacity(0.5),
             selectedItemColor: Colors.white,
             unselectedLabelStyle: unselectedLabelStyle,

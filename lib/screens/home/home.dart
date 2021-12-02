@@ -14,6 +14,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: MyColor.primary[600],
         centerTitle: true,
         leading: IconButton(
             icon: Icon(Icons.person),
