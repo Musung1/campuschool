@@ -29,7 +29,7 @@ class AddClassController extends GetxController {
         .ref('$imageName.jpeg').putFile(file);
   }
 
-  Future<void> pickImg() async {
+  Future<void> pickImg() async { 
     XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
         pickedImage = image;

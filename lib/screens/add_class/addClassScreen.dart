@@ -10,6 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
@@ -21,6 +22,15 @@ class AddClassScreen extends StatefulWidget {
 }
 
 class _AddClassScreenState extends State<AddClassScreen> {
+  final textDetector = GoogleMlKit.vision.textDetector();
+  void _recognizeEmails() async {
+
+    final inputImage = InputImage.fromFilePath(addClassController.pickedImage.path);
+    final text = await textDetector.processImage(inputImage);
+    print(text.text);
+    print(text.text.length);
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +42,7 @@ class _AddClassScreenState extends State<AddClassScreen> {
               child: Text("완료",
                   style: MyTextStyle.buttonText.copyWith(color: MyColor.white)),
               onPressed: () {
-                addClassController.addClassToFirebase();
-                addClassController.uploadFile();
-                Get.back();
+                _recognizeEmails();
               },
             )
           ],
@@ -64,87 +72,6 @@ class _AddClassScreenState extends State<AddClassScreen> {
                         addClassController.pickImg();
                   }),
                 ],
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.name,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "클래스 이름",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                onTap: () {
-                  Get.to(AuthComplete());
-                },
-                controller: addClassController.location,
-                readOnly: true,
-                cursorColor: MyColor.primary,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "장소",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.category,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "클래스 종류",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.description,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "클래스 설명",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.price,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "가격",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.date,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "기간",
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.history,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "캠티 약력",
-                ),
               ),
             ],
           ),
