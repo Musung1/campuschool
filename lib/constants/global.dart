@@ -17,6 +17,4 @@ var categoryAdaptor = {
   "촬영" : "filming",
   "춤" : "dance",
   "인기" : "favorite",
-
-
 };

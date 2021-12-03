@@ -1,4 +1,5 @@
 import 'package:campuschool/constants/firebaseConstants.dart';
+import 'package:campuschool/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -24,11 +25,15 @@ class AuthController extends GetxController{
         user = userCredential.user;
 
         if (user != null && userCredential.additionalUserInfo!.isNewUser) {
-          addUserToFirebase(
-              user.uid,
-              user.displayName.toString(),
-              user.email.toString(),
-              "I promise to take the test honestly before GOD.");
+          kUser newUser = kUser(
+            name : user.displayName!,
+            uid : user.uid,
+            email : user.email!,
+            takedClass: [],
+            myClass: [],
+            status_massage: "I promise to take the test honestly before GOD.",
+          );
+          addUserToFirebase(newUser);
         }
       } catch (e) {
         print(e);
@@ -55,12 +60,15 @@ class AuthController extends GetxController{
           user = userCredential.user;
 
           if (user != null && userCredential.additionalUserInfo!.isNewUser) {
-            addUserToFirebase(
-              user.uid,
-              user.displayName.toString(),
-              user.email.toString(),
-              "I promise to take the test honestly before GOD.",
+            kUser newUser = kUser(
+              name : user.displayName!,
+              uid : user.uid,
+              email : user.email!,
+              takedClass: [],
+              myClass: [],
+              status_massage: "I promise to take the test honestly before GOD.",
             );
+            addUserToFirebase(newUser);
           }
         } on FirebaseAuthException catch (e) {
           print(e);
@@ -73,13 +81,14 @@ class AuthController extends GetxController{
     }
   }
 
-  addUserToFirebase(String uid, String displayName,
-      String email, String status_massage) {
-    userCollection.doc(uid).set({
-      "uid": uid,
-      "name": displayName,
-      "email": email,
-      "status_massage": status_massage,
+  addUserToFirebase(kUser user) {
+    userCollection.doc().set({
+      "uid": user.uid,
+      "name": user.name,
+      "email": user.email,
+      "status_massage": user.status_massage,
+      "takedClass" : user.takedClass,
+      "myClass" : user.myClass,
     });
   }
 
