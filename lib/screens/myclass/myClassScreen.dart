@@ -31,11 +31,20 @@ class MyClassScreen extends StatelessWidget {
     kUser currentUser = userController.userList
         .where((value) => value.uid == auth.currentUser!.uid)
         .first;
+
     classController.takedClasses.value = currentUser.takedClass
         .map((value) => classController.classList
-            .where((element) => element.id == value)
-            .first)
+        .where((element) => element.id == value)
+        .first)
         .toList();
+
+
+    classController.myClasses.value = currentUser.myClass
+        .map((value) => classController.classList
+        .where((element) => element.id == value)
+        .first)
+        .toList();
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: ListView(
@@ -43,16 +52,16 @@ class MyClassScreen extends StatelessWidget {
           _userDesc(),
           _header("수강중인 클래스"),
           Obx(
-            () => classController.takedClasses.isBlank!
-                ? Text("현재 수강중인 클래스가 없습니다.")
-                :
-                Container(
-                  height: 260,
-                  child: ListView(
+                  () => classController.takedClasses.isBlank!
+                  ? Text("현재 수강중인 클래스가 없습니다.")
+                  :
+              Container(
+                height: 260,
+                child: ListView(
                   children:
-                    _buildGridCards(classController.takedClasses),
-                  ),
-                )
+                  _buildGridCards(classController.takedClasses),
+                ),
+              )
 
           ),
           _header("강의중인 클래스"),
@@ -173,7 +182,7 @@ class MyClassScreen extends StatelessWidget {
                 product.name,
                 maxLines: 1,
                 style:
-                    MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold),
+                MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(
                 product.description,
@@ -189,6 +198,6 @@ class MyClassScreen extends StatelessWidget {
 
 Future<String> downloadURLExample(String file) async {
   String downloadURL =
-      await firebaseStorage.ref('${file}.jpeg').getDownloadURL();
+  await firebaseStorage.ref('${file}.jpeg').getDownloadURL();
   return downloadURL;
 }
