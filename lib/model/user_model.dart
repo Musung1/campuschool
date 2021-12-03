@@ -19,5 +19,5 @@ class kUser{
         email = map["email"].toString(),
         status_massage = map["status_massage"].toString(),
         takedClass = map["takedClass"],
-        myClass = map["takedClass"];
+        myClass = map["myClass"];
 }
