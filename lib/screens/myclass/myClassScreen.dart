@@ -29,13 +29,15 @@ class MyClassScreen extends StatelessWidget {
 
   Widget _bodyWidget() {
     kUser currentUser = userController.userList
-        .where((value) => value.uid == auth.currentUser!.uid).single;
+        .where((value) => value.uid == auth.currentUser!.uid)
+        .first;
 
     classController.takedClasses.value = currentUser.takedClass
         .map((value) => classController.classList
             .where((element) => element.id == value)
             .first)
         .toList();
+
 
     classController.myClasses.value = currentUser.myClass
         .map((value) => classController.classList
@@ -49,23 +51,23 @@ class MyClassScreen extends StatelessWidget {
         children: [
           _userDesc(),
           _header("수강중인 클래스"),
-          Obx(() => classController.takedClasses.isBlank!
-              ? Text("현재 수강중인 클래스가 없습니다.")
-              : Container(
+          Obx(
+            () => classController.takedClasses.isBlank!
+                ? Text("현재 수강중인 클래스가 없습니다.")
+                :
+                Container(
                   height: 260,
                   child: ListView(
-                    children: _buildGridCards(classController.takedClasses),
+                  children:
+                    _buildGridCards(classController.takedClasses),
                   ),
-                )),
+                )
+
+          ),
           _header("강의중인 클래스"),
-          Obx(() => classController.myClasses.isBlank!
-              ? Text("현재 수강중인 클래스가 없습니다.")
-              : Container(
-            height: 260,
-            child: ListView(
-              children: _buildGridCards(classController.myClasses),
-            ),
-          )),
+          Center(
+            child: Text("강의중인 클래스가 없습니다."),
+          ),
           SizedBox(
             height: 280,
           ),
@@ -160,9 +162,8 @@ class MyClassScreen extends StatelessWidget {
     }
     return Classes.map((product) {
       return GestureDetector(
-        onTap: () {
-          Get.toNamed("/landing/classroom/class_room_screen",
-              arguments: product);
+        onTap: (){
+          Get.toNamed("/landing/classroom/class_room_screen", arguments: product);
         },
         child: Card(
             clipBehavior: Clip.antiAlias,
@@ -173,22 +174,21 @@ class MyClassScreen extends StatelessWidget {
                   builder:
                       (BuildContext context, AsyncSnapshot<String> snapshot1) {
                     if (snapshot1.hasData) {
-                      return Image.network(snapshot1.data!,
-                          fit: BoxFit.fitWidth);
+                      return Image.network(snapshot1.data!, fit: BoxFit.fitWidth);
                     } else
                       return const CircularProgressIndicator();
                   }),
               title: Text(
                 product.name,
                 maxLines: 1,
-                style: MyTextStyle.buttonText
-                    .copyWith(fontWeight: FontWeight.bold),
+                style:
+                    MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold),
               ),
               subtitle: Text(
                 product.description,
                 maxLines: 1,
-                style: MyTextStyle.buttonText
-                    .copyWith(fontWeight: FontWeight.w600, fontSize: 14),
+                style:
+                MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.w600, fontSize: 14 ),
               ),
             )),
       );
