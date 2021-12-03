@@ -215,6 +215,9 @@ class DetailScreen extends StatelessWidget {
                     SizedBox(height: 16),
                     ElevatedButton(
                         onPressed: () {
+                          print(auth.currentUser!.uid);
+                          print(product.id);
+                          userController.addTakedClass(product.id);
                           Get.back();
                         },
                         style: ButtonStyle(

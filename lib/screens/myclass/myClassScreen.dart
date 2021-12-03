@@ -1,4 +1,7 @@
+import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/constants/firebaseConstants.dart';
+import 'package:campuschool/model/class_model.dart';
+import 'package:campuschool/model/user_model.dart';
 import 'package:campuschool/themes/color_theme.dart';
 import 'package:campuschool/themes/text_theme.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +25,18 @@ class MyClassScreen extends StatelessWidget {
   }
 
   Widget _bodyWidget() {
+    kUser currentUser = userController.userList.where((value)=>value.uid == auth.currentUser!.uid).first;
+    classController.takedClasses.value = currentUser.takedClass.map((value)=>
+        classController.classList.where((element)=>element.id == value).first).toList();
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: ListView(
         children: [
           _userDesc(),
           _header("수강중인 클래스"),
-          Center(child: Text("수강중인 클래스가 없습니다."),),
+          Obx(()=>Text(classController.takedClasses.isBlank!?
+              "hi":
+              classController.takedClasses.first.name)),
           _header("강의중인 클래스"),
           Center(child: Text("강의중인 클래스가 없습니다."),),
           SizedBox(height: 280,),

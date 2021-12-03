@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class ClassController extends GetxController{
   static ClassController instance = Get.find();
   var classList = <Class>[].obs;
+  RxList takedClasses = [].obs;
   @override
   void onInit() {
     classList.bindStream(getClass());
