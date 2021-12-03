@@ -97,14 +97,14 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 16,
               ),
-              // TextFormField(
-              //   cursorColor: MyColor.primary,
-              //   controller: addClassController.category,
-              //   decoration: InputDecoration(
-              //     border: OutlineInputBorder(),
-              //     labelText: "클래스 종류",
-              //   ),
-              // ),
+              TextFormField(
+                cursorColor: MyColor.primary,
+                controller: addClassController.category,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "클래스 종류",
+                ),
+              ),
               SizedBox(
                 height: 16,
               ),

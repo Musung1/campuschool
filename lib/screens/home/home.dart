@@ -107,7 +107,7 @@ class Home extends StatelessWidget {
             children: [
               _category(Icon(Icons.personal_video), "코딩"),
               _category(Icon(Icons.camera_alt), "촬영"),
-              _category(Icon(Icons.accessibility_new), "운동"),
+              _category(Icon(Icons.accessibility_new), "춤"),
               _category(Icon(Icons.star), "인기"),
             ],
           ),
@@ -118,6 +118,9 @@ class Home extends StatelessWidget {
 
   Widget _category(Icon icon, String name) {
     return GestureDetector(
+      onTap: (){
+        Get.toNamed("/landing/home/categoryScreen",arguments : name);
+      },
       child: Column(
         children: [
           icon,

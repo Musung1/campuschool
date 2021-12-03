@@ -1,3 +1,4 @@
+import 'package:campuschool/screens/Category/categoryScreen.dart';
 import 'package:campuschool/screens/Search/searchScreen.dart';
 import 'package:campuschool/screens/home/home.dart';
 import 'package:campuschool/screens/landingScreen.dart';
@@ -54,6 +55,11 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/home/detailScreen",
           page: () => DetailScreen(),
+        ),
+        GetPage(
+          name: "/landing/home/categoryScreen",
+          page: () => CategoryScreen(),
+          binding: CategoryBinding(),
         ),
       ]
     );

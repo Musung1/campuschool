@@ -23,3 +23,9 @@ class AddClassBinding implements Bindings {
     Get.lazyPut(() => AddClassController());
   }
 }
+class CategoryBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => ClassController());
+  }
+}
