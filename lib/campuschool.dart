@@ -4,6 +4,8 @@ import 'package:campuschool/screens/landingScreen.dart';
 import 'package:campuschool/screens/login/loginPage.dart';
 import 'package:campuschool/screens/profile/profileScreen.dart';
 import 'package:campuschool/screens/splash/splashScreen.dart';
+import 'package:campuschool/test.dart';
+import 'package:campuschool/test_webview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +49,7 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/home/addClass",
           page: () => AddClassScreen(),
+          binding: AddClassBinding(),
         ),
         GetPage(
           name: "/landing/home/detailScreen",

@@ -1,3 +1,4 @@
+import 'package:campuschool/controller/add_class_controller.dart';
 import 'package:campuschool/controller/auth_controller.dart';
 import 'package:campuschool/controller/class_controller.dart';
 import 'package:campuschool/controller/landing_controller.dart';
@@ -14,5 +15,11 @@ class LandingBinding implements Bindings {
   void dependencies() {
     Get.lazyPut(() => LandingController());
     Get.lazyPut(() => ClassController());
+  }
+}
+class AddClassBinding implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => AddClassController());
   }
 }

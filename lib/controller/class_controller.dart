@@ -17,14 +17,17 @@ class ClassController extends GetxController{
       return value.docs.map((element){
         return Class(
           id: element.id.toString(),
-          name : element.data()['name'],
-          category : element.data()['category'],
-          price : element.data()['price'],
-          description : element.data()['description'],
-          location : element.data()['location'],
-          date : element.data()['date'],
-          image : element.data()['image'],
-          author : element.data()['author'],
+          name : element.data()['name'].toString(),
+          category : element.data()['category'].toString(),
+          price : element.data()['price'].toString(),
+          description : element.data()['description'].toString(),
+          location : element.data()['location'].toString(),
+          date : element.data()['date'].toString(),
+          image : element.data()['image'].toString(),
+          author : element.data()['author'].toString(),
+          history : element.data()['history'].toString(),
+          latitude : element.data()['latitude'].toString(),
+          longitude : element.data()['longitude'].toString(),
         );
       }
       ).toList();
