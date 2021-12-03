@@ -12,7 +12,9 @@ class MyClassScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("내 클래스"),
+        backgroundColor: MyColor.primary,
+        title: Text("내 클래스", style: MyTextStyle.centerTitle.copyWith(color: MyColor.white),),
+        centerTitle: true,
       ),
       body: _bodyWidget(),
     );

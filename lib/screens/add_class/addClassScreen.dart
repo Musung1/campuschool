@@ -27,7 +27,8 @@ class _AddClassScreenState extends State<AddClassScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("클래스 개설하기"),
+          backgroundColor: MyColor.primary,
+          title: Text("클래스 개설하기", style: MyTextStyle.centerTitle.copyWith(color: MyColor.white),),
           centerTitle: true,
           actions: [
             TextButton(

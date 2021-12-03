@@ -48,19 +48,27 @@ class DetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
+                    SizedBox(height: 32,),
                     Container(
-                      child: Text(product.name),
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: MyColor.darkContainer,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(product.name, style: MyTextStyle.buttonText.copyWith(color: MyColor.primary, fontWeight: FontWeight.bold, fontSize: 18)),
+                          Text(" 클래스에 오신걸 환영합니다! ", style: MyTextStyle.buttonText.copyWith(color: MyColor.primary[300], fontWeight: FontWeight.bold)),
+                        ],
                       ),
+                      decoration: BoxDecoration(
+                          color: MyColor.primary[100],
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          )),
+                      padding: EdgeInsets.all(16),
                     ),
+                    SizedBox(height: 16,),
                     Row(
                       children: [
                         Container(
+                          width: 300,
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: MyColor.darkContainer,
@@ -69,7 +77,13 @@ class DetailScreen extends StatelessWidget {
                             ),
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              Text(
+                                "가격    ",
+                                style: MyTextStyle.buttonText
+                                    .copyWith(color: MyColor.white, fontWeight: FontWeight.bold),
+                              ),
                               Text(
                                 "주 1시간 2회 3개월    ",
                                 style: MyTextStyle.buttonText
@@ -96,21 +110,91 @@ class DetailScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16.0),
-                    Text(
-                      classController.classList
-                          .where((element) => element.id == product.id)
-                          .first
-                          .description,
-                      maxLines: 2,
-                      style: const TextStyle(fontSize: 10),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: MyColor.darkSub,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("클래스 설명", style: MyTextStyle.buttonText.copyWith(
+                           fontSize: 16, fontWeight: FontWeight.bold)),
+                          Divider(
+                            indent: 16,
+                            endIndent: 16,
+                          ),
+                          Text(
+                            classController.classList
+                                .where((element) => element.id == product.id)
+                                .first
+                                .description,
+                            maxLines: 2,
+                            style:MyTextStyle.buttonText.copyWith(
+                                fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 16,),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: MyColor.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("캠티 설명", style: MyTextStyle.buttonText.copyWith(
+                              fontSize: 16, fontWeight: FontWeight.bold)),
+                          Divider(
+                            indent: 16,
+                            endIndent: 16,
+                          ),
+                          Row(
+                            children: [
+                              Text("ID:   "),
+                              Text(
+                                classController.classList.where((element) => element.id == product.id).first.author,
+                                maxLines: 2,
+                                style:MyTextStyle.buttonText.copyWith(
+                                    fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            indent: 16,
+                            endIndent: 16,
+                          ),
+                          Row(
+                            children: [
+                              Text("약력:   "),
+                              Text(
+                                classController.classList.where((element) => element.id == product.id).first.history,
+                                maxLines: 2,
+                                style:MyTextStyle.buttonText.copyWith(
+                                    fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 16.0),
-                    Column(children: [
-                      Text(
-                          "creator = ${classController.classList.where((element) => element.id == product.id).first.author}"),
-                    ]),
-                    SizedBox(
-                      height: 100,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text("장소", style:MyTextStyle.buttonText.copyWith(
+                              fontSize: 16, fontWeight: FontWeight.bold), ),
+                        ],
+                      ),
                     ),
                     Container(
                       height: Get.height * 0.3,
@@ -129,11 +213,17 @@ class DetailScreen extends StatelessWidget {
                         },
                       ),
                     ),
+                    SizedBox(height: 16),
                     ElevatedButton(
                         onPressed: () {
                           Get.back();
                         },
-                        child: Text("수강 신청하기")),
+                        style: ButtonStyle(
+                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
+                        ),
+                        child: Text("수강 신청하기", style:MyTextStyle.buttonText.copyWith(
+                            fontSize: 16, fontWeight: FontWeight.bold, color: MyColor.white),)),
+                    SizedBox(height: 16),
                   ],
                 ),
               ),

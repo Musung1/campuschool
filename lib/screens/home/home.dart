@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
                 Get.toNamed('/landing/home/search');
               }),
         ],
-        title: Text("캠퍼스쿨"),
+        title: Text("캠퍼스쿨", style: MyTextStyle.centerTitle.copyWith(color: MyColor.white),),
       ),
       body: _bodyWidget(),
     );
