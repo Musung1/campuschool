@@ -17,6 +17,7 @@ class MyClassScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: _bodyWidget(),
+      floatingActionButton: _addClassButton(),
     );
   }
 
@@ -28,8 +29,9 @@ class MyClassScreen extends StatelessWidget {
           _userDesc(),
           _header("수강중인 클래스"),
           Center(child: Text("수강중인 클래스가 없습니다."),),
-          SizedBox(height: 300,),
-          _addClassButton(),
+          _header("강의중인 클래스"),
+          Center(child: Text("강의중인 클래스가 없습니다."),),
+          SizedBox(height: 280,),
         ],
       ),
     );
@@ -68,12 +70,18 @@ class MyClassScreen extends StatelessWidget {
     );
   }
   Widget _addClassButton() {
-    return ElevatedButton.icon(
-        onPressed: () {
-          Get.toNamed("/landing/home/addClass");
-        },
-        icon: Icon(Icons.add),
-        label: Text("클래스 개설하기"));
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton.icon(
+          onPressed: () {
+            Get.toNamed("/landing/home/addClass");
+          },
+          style: ButtonStyle(
+            backgroundColor:  MaterialStateProperty.all<Color>(Colors.orange),
+          ),
+          icon: Icon(Icons.add),
+          label: Text("클래스 개설하기", style: MyTextStyle.buttonText.copyWith(color: MyColor.white, fontWeight: FontWeight.bold),)),
+    );
   }
 
   Widget _header(String headerName) {
