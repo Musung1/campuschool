@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
 import 'package:campuschool/constants/firebaseConstants.dart';
+import 'package:campuschool/constants/global.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,8 @@ class AddClassController extends GetxController {
   TextEditingController price = TextEditingController();
   TextEditingController date = TextEditingController();
   TextEditingController history = TextEditingController();
+  Category selectedValue = Category.vocal;
+
 
   Future<void> uploadFile() async {
     File file = File(pickedImage.path);
@@ -59,10 +62,4 @@ class AddClassController extends GetxController {
         .getDownloadURL();
     return downloadURL;
   }
-  // Future<void> updateImageName(Class class,String imageName) async {
-  // await firebaseFirestore.collection("hotels").doc(class.id).update({
-  // "image": imageName,
-  // });
-  // }
-  // }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:campuschool/autoComplete.dart';
 import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/constants/firebaseConstants.dart';
+import 'package:campuschool/constants/global.dart';
 import 'package:campuschool/test.dart';
 import 'package:campuschool/themes/color_theme.dart';
 import 'package:campuschool/themes/text_theme.dart';
@@ -21,6 +22,7 @@ class AddClassScreen extends StatefulWidget {
 }
 
 class _AddClassScreenState extends State<AddClassScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,14 +96,14 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 16,
               ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.category,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "클래스 종류",
-                ),
-              ),
+              // TextFormField(
+              //   cursorColor: MyColor.primary,
+              //   controller: addClassController.category,
+              //   decoration: InputDecoration(
+              //     border: OutlineInputBorder(),
+              //     labelText: "클래스 종류",
+              //   ),
+              // ),
               SizedBox(
                 height: 16,
               ),
