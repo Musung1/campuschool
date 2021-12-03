@@ -23,6 +23,10 @@ class AddClassScreen extends StatefulWidget {
 
 class _AddClassScreenState extends State<AddClassScreen> {
 
+
+  String dropdownvalue = 'vocal';
+  var items =  ['vocal','instrument','cook','exercise','coding','filming','dance','popular'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +50,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 대표 사진", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
+              ),
               Container(
                 height: 200,
                 child: Center(
@@ -71,6 +79,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 8,
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 이름", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
+              ),
               TextFormField(
                 cursorColor: MyColor.primary,
                 controller: addClassController.name,
@@ -81,6 +93,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
               ),
               SizedBox(
                 height: 16,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 장소", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
               ),
               TextFormField(
                 onTap: () {
@@ -97,16 +113,36 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 16,
               ),
-              TextFormField(
-                cursorColor: MyColor.primary,
-                controller: addClassController.category,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "클래스 종류",
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 종류", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  value: dropdownvalue,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                        value: items,
+                        child: Expanded(child: Text(items, style: MyTextStyle.buttonText.copyWith(color: MyColor.primary[300]),))
+                    );
+                  }
+                  ).toList(),
+                  onChanged: (String? newValue){
+                    setState(() {
+                      dropdownvalue = newValue!;
+                    });
+                    addClassController.category.text = newValue!;
+                  },
                 ),
               ),
               SizedBox(
                 height: 16,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 설명", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
               ),
               TextFormField(
                 cursorColor: MyColor.primary,
@@ -119,6 +155,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 16,
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 가격", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
+              ),
               TextFormField(
                 cursorColor: MyColor.primary,
                 controller: addClassController.price,
@@ -130,6 +170,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
               SizedBox(
                 height: 16,
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("클래스 기간", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
+              ),
               TextFormField(
                 cursorColor: MyColor.primary,
                 controller: addClassController.date,
@@ -140,6 +184,10 @@ class _AddClassScreenState extends State<AddClassScreen> {
               ),
               SizedBox(
                 height: 16,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("캠티 약력", style: MyTextStyle.buttonText.copyWith(fontWeight: FontWeight.bold, color: MyColor.primary),),
               ),
               TextFormField(
                 cursorColor: MyColor.primary,

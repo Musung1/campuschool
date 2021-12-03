@@ -68,7 +68,6 @@ class DetailScreen extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          width: 300,
                           padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: MyColor.darkContainer,
