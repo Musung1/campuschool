@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'dart:io';
+import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/constants/firebaseConstants.dart';
 import 'package:campuschool/constants/global.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -41,8 +42,8 @@ class AddClassController extends GetxController {
     }
   }
 
-  addClassToFirebase() {
-    firebaseFirestore.collection("class").add(<String, dynamic>{
+  Future addClassToFirebase() async{
+    await firebaseFirestore.collection("class").add(<String, dynamic>{
       'author': auth.currentUser!.uid,
       'name': name.text,
       'price': price.text,
@@ -54,7 +55,7 @@ class AddClassController extends GetxController {
       'history': history.text,
       'latitude' : latitude,
       'longitude' : longitude,
-    });
+    }).then((value) => userController.addMyClass(value.id));
   }
   Future<String> downloadURL() async {
     String downloadURL = await firebaseStorage

@@ -29,6 +29,24 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: MyColor.primary[600],
         title: Text(product.name),
         centerTitle: true,
+        actions: [
+          Obx(() => !userController.isLiked.value
+              ? IconButton(
+                  onPressed: () {
+                    userController.isLiked.value =
+                        !userController.isLiked.value;
+                    userController.addLikedClass(product.id);
+                  },
+                  icon: Icon(Icons.favorite_border),
+                )
+              : IconButton(
+                  onPressed: () {
+                    userController.isLiked.value =
+                        !userController.isLiked.value;
+                  },
+                  icon: Icon(Icons.favorite, color: Colors.orange,),
+                ))
+        ],
       ),
       body: Obx(() => ListView(
             children: [
@@ -48,13 +66,22 @@ class DetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 32,),
+                    SizedBox(
+                      height: 32,
+                    ),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(product.name, style: MyTextStyle.buttonText.copyWith(color: MyColor.primary, fontWeight: FontWeight.bold, fontSize: 18)),
-                          Text(" 클래스에 오신걸 환영합니다! ", style: MyTextStyle.buttonText.copyWith(color: MyColor.primary[300], fontWeight: FontWeight.bold)),
+                          Text(product.name,
+                              style: MyTextStyle.buttonText.copyWith(
+                                  color: MyColor.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18)),
+                          Text(" 클래스에 오신걸 환영합니다! ",
+                              style: MyTextStyle.buttonText.copyWith(
+                                  color: MyColor.primary[300],
+                                  fontWeight: FontWeight.bold)),
                         ],
                       ),
                       decoration: BoxDecoration(
@@ -64,7 +91,9 @@ class DetailScreen extends StatelessWidget {
                           )),
                       padding: EdgeInsets.all(16),
                     ),
-                    SizedBox(height: 16,),
+                    SizedBox(
+                      height: 16,
+                    ),
                     Row(
                       children: [
                         Container(
@@ -80,8 +109,9 @@ class DetailScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "가격    ",
-                                style: MyTextStyle.buttonText
-                                    .copyWith(color: MyColor.white, fontWeight: FontWeight.bold),
+                                style: MyTextStyle.buttonText.copyWith(
+                                    color: MyColor.white,
+                                    fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 "주 1시간 2회 3개월    ",
@@ -120,8 +150,9 @@ class DetailScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("클래스 설명", style: MyTextStyle.buttonText.copyWith(
-                           fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text("클래스 설명",
+                              style: MyTextStyle.buttonText.copyWith(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
                           Divider(
                             indent: 16,
                             endIndent: 16,
@@ -132,13 +163,15 @@ class DetailScreen extends StatelessWidget {
                                 .first
                                 .description,
                             maxLines: 2,
-                            style:MyTextStyle.buttonText.copyWith(
-                                fontSize: 16),
+                            style:
+                                MyTextStyle.buttonText.copyWith(fontSize: 16),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 16,),
+                    SizedBox(
+                      height: 16,
+                    ),
                     Container(
                       padding: EdgeInsets.all(16),
                       decoration: BoxDecoration(
@@ -150,8 +183,9 @@ class DetailScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("캠티 설명", style: MyTextStyle.buttonText.copyWith(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text("캠티 설명",
+                              style: MyTextStyle.buttonText.copyWith(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
                           Divider(
                             indent: 16,
                             endIndent: 16,
@@ -160,10 +194,14 @@ class DetailScreen extends StatelessWidget {
                             children: [
                               Text("ID:   "),
                               Text(
-                                classController.classList.where((element) => element.id == product.id).first.author,
+                                classController.classList
+                                    .where(
+                                        (element) => element.id == product.id)
+                                    .first
+                                    .author,
                                 maxLines: 2,
-                                style:MyTextStyle.buttonText.copyWith(
-                                    fontSize: 16),
+                                style: MyTextStyle.buttonText
+                                    .copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -175,10 +213,14 @@ class DetailScreen extends StatelessWidget {
                             children: [
                               Text("약력:   "),
                               Text(
-                                classController.classList.where((element) => element.id == product.id).first.history,
+                                classController.classList
+                                    .where(
+                                        (element) => element.id == product.id)
+                                    .first
+                                    .history,
                                 maxLines: 2,
-                                style:MyTextStyle.buttonText.copyWith(
-                                    fontSize: 16),
+                                style: MyTextStyle.buttonText
+                                    .copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -190,8 +232,11 @@ class DetailScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Text("장소", style:MyTextStyle.buttonText.copyWith(
-                              fontSize: 16, fontWeight: FontWeight.bold), ),
+                          Text(
+                            "장소",
+                            style: MyTextStyle.buttonText.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                     ),
@@ -221,10 +266,16 @@ class DetailScreen extends StatelessWidget {
                           Get.back();
                         },
                         style: ButtonStyle(
-                          backgroundColor:  MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.deepPurpleAccent),
                         ),
-                        child: Text("수강 신청하기", style:MyTextStyle.buttonText.copyWith(
-                            fontSize: 16, fontWeight: FontWeight.bold, color: MyColor.white),)),
+                        child: Text(
+                          "수강 신청하기",
+                          style: MyTextStyle.buttonText.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: MyColor.white),
+                        )),
                     SizedBox(height: 16),
                   ],
                 ),

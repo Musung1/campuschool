@@ -32,6 +32,7 @@ class AuthController extends GetxController{
             takedClass: [],
             myClass: [],
             status_massage: "I promise to take the test honestly before GOD.",
+            likedClass: [],
           );
           addUserToFirebase(newUser);
         }
@@ -67,6 +68,7 @@ class AuthController extends GetxController{
               takedClass: [],
               myClass: [],
               status_massage: "I promise to take the test honestly before GOD.",
+              likedClass: [],
             );
             addUserToFirebase(newUser);
           }
@@ -89,6 +91,7 @@ class AuthController extends GetxController{
       "status_massage": user.status_massage,
       "takedClass" : user.takedClass,
       "myClass" : user.myClass,
+      "likedClass" : user.likedClass,
     });
   }
 

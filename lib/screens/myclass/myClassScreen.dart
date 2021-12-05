@@ -65,8 +65,17 @@ class MyClassScreen extends StatelessWidget {
 
           ),
           _header("강의중인 클래스"),
-          Center(
-            child: Text("강의중인 클래스가 없습니다."),
+          Obx(
+                () => classController.myClasses.isBlank!
+                ? Text("현재 강의중인 클래스가 없습니다.")
+                :
+            Container(
+              height: 260,
+              child: ListView(
+                children:
+                _buildGridCards(classController.myClasses),
+              ),
+            )
           ),
           SizedBox(
             height: 280,

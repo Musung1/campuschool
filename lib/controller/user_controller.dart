@@ -7,15 +7,25 @@ import 'package:get/get.dart';
 class UserController extends GetxController{
   static UserController instance = Get.find();
   var userList = <kUser>[].obs;
+  RxBool isLiked = false.obs;
+
   @override
   void onInit() {
     userList.bindStream(getUsers());
     super.onInit();
   }
-  kUser getCurrentUser(){
-    return userList.where((value)=>value.uid == auth.currentUser).first;
-  }
 
+
+  addLikedClass(String likedClass){
+    var k = firebaseFirestore.collection("user").snapshots().map((value)=>
+    value.docs.where((value)=>value.data()["uid"] == auth.currentUser!.uid)
+        .first
+    );
+    k.first.then((value)=>
+        value.reference.update({
+          'likedClass': FieldValue.arrayUnion([likedClass]),
+        }));
+  }
 
   addTakedClass(String takedClass){
     var k = firebaseFirestore.collection("user").snapshots().map((value)=>
@@ -26,6 +36,17 @@ class UserController extends GetxController{
         value.reference.update({
       'takedClass': FieldValue.arrayUnion([takedClass]),
     }));
+  }
+
+  addMyClass(String myClass){
+    var k = firebaseFirestore.collection("user").snapshots().map((value)=>
+    value.docs.where((value)=>value.data()["uid"] == auth.currentUser!.uid)
+        .first
+    );
+    k.first.then((value)=>
+        value.reference.update({
+          'myClass': FieldValue.arrayUnion([myClass]),
+        }));
   }
   Stream<List<kUser>> getUsers() {
     return firebaseFirestore.collection("user")

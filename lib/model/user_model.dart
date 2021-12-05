@@ -5,6 +5,7 @@ class kUser{
   final String status_massage;
   final List takedClass;
   final List myClass;
+  final List likedClass;
   kUser({
     required this.uid,
     required this.takedClass,
@@ -12,6 +13,7 @@ class kUser{
     required this.name,
     required this.email,
     required this.status_massage,
+    required this.likedClass,
   });
   kUser.fromMap(Map<String, dynamic> map)
       : uid = map["uid"].toString(),
@@ -19,5 +21,6 @@ class kUser{
         email = map["email"].toString(),
         status_massage = map["status_massage"].toString(),
         takedClass = map["takedClass"],
-        myClass = map["takedClass"];
+        myClass = map["myClass"],
+        likedClass = map["likedClass"];
 }
