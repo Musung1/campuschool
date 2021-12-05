@@ -35,5 +35,6 @@ class CategoryBinding implements Bindings {
 class ClassRoomBinding implements Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => AddClassController());
   }
 }

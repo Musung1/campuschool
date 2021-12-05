@@ -1,9 +1,11 @@
 class Assignment {
+  String? id;
   final String date;
   final String name;
   final List complete;
 
   Assignment({
+    required this.id,
     required this.date,
     required this.name,
     required this.complete,

@@ -11,6 +11,7 @@ import 'package:campuschool/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 
 class ClassRoomScreen extends StatefulWidget {
   const ClassRoomScreen({Key? key}) : super(key: key);
@@ -20,7 +21,15 @@ class ClassRoomScreen extends StatefulWidget {
 }
 
 class _ClassRoomScreenState extends State<ClassRoomScreen> {
-  @override
+  final textDetector = GoogleMlKit.vision.textDetector();
+  void _recognizeEmails() async {
+    final inputImage = InputImage.fromFilePath(
+        addClassController.pickedImage.path);
+    final text = await textDetector.processImage(inputImage);
+    print(text.text);
+    print(text.text.length);
+  }
+    @override
   Widget build(BuildContext context) {
     Class product = Get.arguments[0];
     bool isStudent = Get.arguments[1];
@@ -284,7 +293,11 @@ class _ClassRoomScreenState extends State<ClassRoomScreen> {
                             (value) => TextButton(
                               child:Text(value.name),
                               onPressed:(){
-
+                                addClassController.pickImg().then((value)=>
+                                    _recognizeEmails()
+                                );
+                                assignmentController.addComplete(auth.currentUser!.uid,
+                                    value);
                               }
                             ),
                           )
