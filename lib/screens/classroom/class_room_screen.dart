@@ -20,7 +20,8 @@ class ClassRoomScreen extends StatefulWidget {
 class _ClassRoomScreenState extends State<ClassRoomScreen> {
   @override
   Widget build(BuildContext context) {
-    Class product = Get.arguments;
+    Class product = Get.arguments[0];
+    bool isStudent = Get.arguments[1];
     Completer<GoogleMapController> _controller = Completer();
     final CameraPosition _kGooglePlex = CameraPosition(
       target: LatLng(
@@ -232,7 +233,31 @@ class _ClassRoomScreenState extends State<ClassRoomScreen> {
                 ),
               ],
             )),
-            Center(child: Text("hi"),),
+            // 내가 선생이면 공지사항 수정, 과제 내줄 수 있음
+            // 과제 내주기 + 과제 확인 가능
+           // 수강생들 확인
+            // 학생이면 과제 제출
+            isStudent
+                ?
+                Scaffold(
+                  body:ListView(
+                    children:[
+                      Text("과제"),
+                    ],
+                  ),
+                )
+                :
+            Scaffold(
+              floatingActionButton: FloatingActionButton(
+                  onPressed:(){},
+                  child : Text("make")
+              ),
+              body:ListView(
+                children:[
+                  Text("과제"),
+                ],
+              ),
+            )
           ],
         ),
       ),
