@@ -7,6 +7,7 @@ class ClassController extends GetxController{
   var classList = <Class>[].obs;
   RxList takedClasses = [].obs;
   RxList myClasses = [].obs;
+  RxList likedClasses = [].obs;
   @override
   void onInit() {
     classList.bindStream(getClass());

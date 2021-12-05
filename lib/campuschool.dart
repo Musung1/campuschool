@@ -65,6 +65,7 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/classroom/class_room_screen",
           page: () => ClassRoomScreen(),
+          binding: ClassRoomBinding(),
         ),
 
       ]

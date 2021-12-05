@@ -45,7 +45,7 @@ class LandingScreen extends StatelessWidget {
                 icon: Container(
                   margin: EdgeInsets.only(bottom: 7),
                   child: Icon(
-                    Icons.search,
+                    Icons.favorite,
                     size: 20.0,
                   ),
                 ),
