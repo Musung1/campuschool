@@ -1,4 +1,5 @@
 import 'package:campuschool/controller/add_class_controller.dart';
+import 'package:campuschool/controller/assignment_controller.dart';
 import 'package:campuschool/controller/auth_controller.dart';
 import 'package:campuschool/controller/class_controller.dart';
 import 'package:campuschool/controller/landing_controller.dart';

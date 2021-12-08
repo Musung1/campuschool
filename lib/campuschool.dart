@@ -3,6 +3,7 @@ import 'package:campuschool/screens/Search/searchScreen.dart';
 import 'package:campuschool/screens/home/home.dart';
 import 'package:campuschool/screens/landingScreen.dart';
 import 'package:campuschool/screens/login/loginPage.dart';
+import 'package:campuschool/screens/make_assignment/make_assignment_screen.dart';
 import 'package:campuschool/screens/profile/profileScreen.dart';
 import 'package:campuschool/screens/splash/splashScreen.dart';
 import 'package:campuschool/test.dart';
@@ -65,8 +66,12 @@ class Campuschool extends StatelessWidget {
         GetPage(
           name: "/landing/classroom/class_room_screen",
           page: () => ClassRoomScreen(),
+          binding: ClassRoomBinding(),
         ),
-
+        GetPage(
+          name: '/make_assignment/make_assignment_screen',
+          page: () => MakeAssignmentScreen()
+        )
       ]
     );
   }

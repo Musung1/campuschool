@@ -15,7 +15,9 @@ class UserController extends GetxController{
     super.onInit();
   }
 
-
+  List<kUser> uidTokUserConverter(List uid){
+    return uid.map((value)=>userList.where((element)=>element.uid ==value).single).toList();
+  }
   addLikedClass(String likedClass){
     var k = firebaseFirestore.collection("user").snapshots().map((value)=>
     value.docs.where((value)=>value.data()["uid"] == auth.currentUser!.uid)

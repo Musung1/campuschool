@@ -41,7 +41,6 @@ class AddClassController extends GetxController {
 
     }
   }
-
   Future addClassToFirebase() async{
     await firebaseFirestore.collection("class").add(<String, dynamic>{
       'author': auth.currentUser!.uid,

@@ -97,7 +97,7 @@ class MyTextStyle {
 
   static const TextStyle buttonText = const TextStyle(
     fontFamily: 'NotoSans', // bold로 바뀜 원래 뭔지 기억 안남..
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     color: MyColor.black,
     fontSize: 18,
   );
