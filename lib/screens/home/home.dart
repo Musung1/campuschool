@@ -1,6 +1,7 @@
 import 'package:campuschool/constants/controllerConstants.dart';
 import 'package:campuschool/constants/firebaseConstants.dart';
 import 'package:campuschool/model/class_model.dart';
+import 'package:campuschool/screens/classroom/allClassesScreen/all_classes_screen.dart';
 import 'package:campuschool/themes/color_theme.dart';
 import 'package:campuschool/themes/text_theme.dart';
 import 'package:flutter/material.dart';
@@ -190,25 +191,30 @@ class Home extends StatelessWidget {
   }
 
   Widget _header(String headerName) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              headerName,
-              style: MyTextStyle.buttonText.copyWith(
-                fontWeight: FontWeight.w900,
-                fontSize: 18,
+    return GestureDetector(
+      onTap:(){
+        Get.toNamed('/landing/home/all_class_screen');
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                headerName,
+                style: MyTextStyle.buttonText.copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
-          Icon(
-            Icons.keyboard_arrow_right,
-            color: MyColor.darkSub,
-            size: 32,
-          ),
-        ],
+            Icon(
+              Icons.keyboard_arrow_right,
+              color: MyColor.darkSub,
+              size: 32,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -222,7 +228,7 @@ class Home extends StatelessWidget {
                 crossAxisCount: 2,
                 padding: const EdgeInsets.all(16.0),
                 childAspectRatio: 8.0 / 9.0,
-                children: _buildGridCards(classController.classList),
+                children: _buildGridCards([classController.classList[0],classController.classList[1]]),
               ),
             )
           : Container(),

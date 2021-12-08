@@ -68,18 +68,18 @@ class FavoriteScreen extends StatelessWidget {
           crossAxisCount: 2,
           padding: const EdgeInsets.all(16.0),
           childAspectRatio: 8.0 / 9.0,
-          children: _buildGridCards(classController.classList),
+          children: _buildGridCards(classController.likedClasses),
         ),
       )
           : Container(),
     );
   }
 
-  List<Card> _buildGridCards(List<Class> Classes) {
+  List<Card> _buildGridCards(RxList Classes) {
     if (Classes.isEmpty) {
       return const <Card>[];
     }
-    return Classes.map((product) {
+    return Classes.value.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
         child: Column(

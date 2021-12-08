@@ -60,7 +60,7 @@ class MyClassScreen extends StatelessWidget {
                 height: 260,
                 child: ListView(
                   children:
-                    _buildGridCards(classController.takedClasses,true),
+               _buildGridCards(classController.takedClasses,true),
                   ),
                 )
           ),
