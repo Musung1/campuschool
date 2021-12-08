@@ -59,23 +59,22 @@ class MyClassScreen extends StatelessWidget {
                 height: 260,
                 child: ListView(
                   children:
-                  _buildGridCards(classController.takedClasses),
-                ),
-              )
-
+               _buildGridCards(classController.takedClasses,true),
+                  ),
+                )
           ),
           _header("강의중인 클래스"),
           Obx(
-                () => classController.myClasses.isBlank!
-                ? Text("현재 강의중인 클래스가 없습니다.")
-                :
-            Container(
-              height: 260,
-              child: ListView(
-                children:
-                _buildGridCards(classController.myClasses),
-              ),
-            )
+                  () => classController.myClasses.isBlank!
+                  ? Text("현재 수강중인 클래스가 없습니다.")
+                  :
+              Container(
+                height: 260,
+                child: ListView(
+                  children:
+                  _buildGridCards(classController.myClasses,false),
+                ),
+              )
           ),
           SizedBox(
             height: 280,
@@ -165,14 +164,14 @@ class MyClassScreen extends StatelessWidget {
     );
   }
 
-  List<GestureDetector> _buildGridCards(RxList Classes) {
+  List<GestureDetector> _buildGridCards(RxList Classes,bool isStudent) {
     if (Classes.isEmpty) {
       return const <GestureDetector>[];
     }
     return Classes.map((product) {
       return GestureDetector(
         onTap: (){
-          Get.toNamed("/landing/classroom/class_room_screen", arguments: product);
+          Get.toNamed("/landing/classroom/class_room_screen", arguments: [product,isStudent]);
         },
         child: Card(
             clipBehavior: Clip.antiAlias,
